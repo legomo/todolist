@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>First Attempt at Templating using Jinja with Flask</title>
+    </head>
+    <body>
+        <h1>First Attempt at Templating using Jinja with Flask</h1>
+        <p>The available tasks are as follows:</p>
+        <table border="1">
+        {% for row in rows: %}
+            <tr>
+                {% for col in row: %}
+                <td>{{ col }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </table>
+    </body>
+</html>
+

@@ -1,7 +1,9 @@
 import sqlite3
+from flask import render_template
 from myTask import app
 
-@app.route('/') #, methods=['GET'])
+@app.route('/')
+@app.route('/tasks', methods=['GET'])
 def getTasks():
     """
     """
@@ -13,10 +15,25 @@ def getTasks():
     cursor.execute("select * from todo;")
     # Fetch the data
     result = cursor.fetchall()
-    print result
     # close the db connection
     conn.close()
     # return data as a string
     return str(result)
-    # return 'Hello, Flask!!!'
+
+@app.route('/temp', methods=['GET'])
+def getTemplate():
+    """
+    """
+    # open db
+    conn = sqlite3.connect(app.config['DATABASE'])
+    # Get the cursor
+    cursor = conn.cursor()
+    # SQL query to fetch the data
+    cursor.execute("select * from todo;")
+    # Fetch the data
+    result = cursor.fetchall()
+    # close the db connection
+    conn.close()
+    # return data as a string
+    return render_template('test.html', rows=result)
 
