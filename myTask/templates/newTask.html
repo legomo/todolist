@@ -1,0 +1,20 @@
+<!-- Template for adding new task from browser -->
+<html>
+    <head>
+        <title>
+            Template for templating adding task
+        </title>
+    </head>
+    <body>
+        <h1>Add a new task to the ToDo list:</h1>
+        <form action="{{ url_for('newTask') }}" method=post>
+            <p>Task:</p>
+            <input type="text" size="30" maxlength="30" name="task"><br>
+            <p>Description:</p>
+            <input type="text" size="40" name="description"><br><br>
+            <input type="submit" name="save" value="save">
+        </form>
+    </body>
+</html>
+
+
