@@ -1,0 +1,14 @@
+<p>Edit the task with ID = {{ idNo }}</p>
+<form action="{{ url_for('updateTask', idNo=idNo) }}" method="post">
+    <p>Task:</p>
+    <input type="text" name="task" vale="{{ old[0] }}" size="30" maxlength="40">
+    <p>Descripton:</p>
+    <textarea name="description" row="5" column="40"></textarea>
+    <select name="status">
+        <option>open</option>
+        <option>closed</option>
+    </select>
+    <br/>
+    <input type="submit" name="save" value="save">
+</form>
+
