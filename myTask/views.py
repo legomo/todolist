@@ -80,6 +80,30 @@ def updateTask(idNo):
         return render_template('editTask.html', old=curData, idNo=idNo) 
 
 
+@app.route('/delete/<int:idNo>', methods=['GET', 'POST'])
+def deleteTask(idNo):
+    """
+    """
+    if request.method == 'POST':
+
+        conn = sqlite3.connect(app.config['DATABASE'])
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM todo WHERE id LIKE ?", (idNo))
+        conn.commit()
+
+        resp = '<p>The item number %s was successfully updated</p>' % idNo
+
+        return resp
+    else:
+        conn = sqlite3.connect(app.config['DATABASE'])
+        cursor = conn.cursor()
+        cursor.execute("SELECT task_name FROM todo WHERE id LIKE ?",
+                       (str(idNo)))
+        curData = cursor.fetchone()
+
+        return render_template('deleteTask.html', old=curData, idNo=idNo)
+
+
 @app.route('/')
 @app.route('/temp', methods=['GET'])
 def getTasks():

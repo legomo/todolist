@@ -1,0 +1,7 @@
+<p>Delete the task with ID = {{ idNo }}</p>
+<form action="{{ url_for('deleteTask', idNo=idNo) }}" method="post">
+    
+    <br/>
+    <input type="submit" name="delete" value="delete">
+</form>
+
