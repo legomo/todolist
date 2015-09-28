@@ -1,12 +1,21 @@
 <html>
     <head>
         <title>First Attempt at Templating using Jinja with Flask</title>
+        <link href="{{ url_for('static', filename='css/style.css') }}"
+        rel="stylesheet" type="text/css">
     </head>
     <body>
         <h1>First Attempt at Templating using Jinja with Flask</h1>
-        <p>The available tasks are as follows:</p>
-        <table border="1">
-        {% for row in rows: %}
+        <p>My List of Tasks:</p>
+        <table border=0>
+            <caption>ToDo List</caption>
+            <tr>
+                <th>ID</th>
+                <th>Task</th>
+                <th>Description</th>
+                <th>Status</th>
+            </tr>
+            {% for row in rows: %}
             <tr>
                 {% for col in row: %}
                 <td>{{ col }}</td>

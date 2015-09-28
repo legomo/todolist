@@ -2,7 +2,7 @@ import sqlite3
 from flask import render_template, request, url_for
 from myTask import app
 
-@app.route('/temp', methods=['GET'])
+@app.route('/tasks', methods=['GET'])
 def getTemplate():
     """
     This view function gets task data from the database and uses a template to
